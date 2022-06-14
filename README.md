@@ -1,6 +1,6 @@
-# Furns Shop
+# Market shop
 
- visit the site Furns App
+ visit the site Market shop App
 
 A Store application made with React. Packages used:
 
