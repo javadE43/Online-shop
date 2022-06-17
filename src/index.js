@@ -5,9 +5,9 @@ import App from './App';
 
 import { BrowserRouter } from 'react-router-dom';
 import {useSelector,useDispatch,Provider} from 'react-redux';
-import {store} from './reduxtolkit/store' 
+import {store} from './containers/store' 
 import './index.css'
-import { productsFatch } from './reduxtolkit/featcher/product/productSlice';
+import { productsFatch } from './containers/featcher/product/productSlice';
 store.dispatch(productsFatch())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

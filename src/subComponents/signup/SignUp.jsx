@@ -86,7 +86,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
            <form onSubmit={handleOnsubmit}>
                 <TextField 
                 variant='standard'
-                sx={{marginTop:'1rem'}}
+                // sx={{marginTop:'1rem'}}
                 label='Username'
                 placeholder='Enter username'
                 fullWidth 
@@ -96,7 +96,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                 />    
                 <TextField
                  variant='standard'
-                 sx={{marginTop:'1rem'}}
+                //  sx={{marginTop:'1rem'}}
                  label='Email'
                  type='email'
                  placeholder='Enter Email'
@@ -132,7 +132,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                 </FormControl>
                 <TextField
                  variant='standard'
-                 sx={{marginTop:'1rem'}}
+                //  sx={{marginTop:'1rem'}}
                  label='Phone'
                  placeholder='Enter phone'
                  fullWidth
@@ -142,7 +142,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                  />    
                 <TextField
                  variant='standard'
-                 sx={{marginTop:'1rem'}}
+                //  sx={{marginTop:'1rem'}}
                  label='Password' 
                  type='Password' 
                  placeholder='Enter Password' 
@@ -154,7 +154,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                    />
                 <TextField
                  variant='standard'
-                 sx={{marginTop:'1rem'}}
+                //  sx={{marginTop:'1rem'}}
                  label='Confirm'
                  type='Password'
                  placeholder='Enter Confirm Password'

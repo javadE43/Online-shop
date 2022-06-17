@@ -1,31 +1,23 @@
 import React,{useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-
 import { useNavigate } from "react-router-dom";
 
 import uniqid from 'uniqid';
-
 
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { Button, Collapse, List, ListItem, ListItemButton, ListItemIcon, ListItemText, useMediaQuery } from '@mui/material';
-import Divider from '@mui/material/Divider';
-import { styled, alpha } from '@mui/material/styles';
+import { Button, Collapse,ListItem} from '@mui/material';
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded';
 
-
-import { addToCart, decreaseCart, getTotal, removeallproducts, removeCart } from '../../reduxtolkit/featcher/cart/cartslice';
+import { addToCart, decreaseCart, getTotal, removeallproducts, removeCart } from '../../containers/featcher/cart/cartslice';
 
 import {StylePaper,StylePaperItem,StyleListCartShoping,StyleImageItemCartShoping,StyleIconButton}from './index'
 
-
 export const CartShopping = () => {
-
-
 
     const navigete=useNavigate()
 
@@ -36,25 +28,18 @@ export const CartShopping = () => {
     const handleClickAway = () => {
         setShowproductsshopingcart(false);
       };
-
-
       const handlerRemoveCart=(item)=>{
         Dispatch(removeCart(item))
       }
-     
     const handlerDecreaseCart=(item)=>{
       Dispatch(decreaseCart(item))
     }
-  
     const handlerremoveallproducts=()=>{
       Dispatch(removeallproducts())
     }
-
-
     const handleraddtocart=(product)=>{
       navigete('/cart')
     }
-  
     React.useEffect(()=>{
       Dispatch(getTotal())
     },[cart])
@@ -95,8 +80,8 @@ export const CartShopping = () => {
                     <div>
                       <p style={{color:'#0000ff'}}>{product.title}</p>
                       <div>
-                        <span>price {product.price*product.cartQuantity}<ClearRoundedIcon /> </span>
-                        <span>{product.cartQuantity}number</span>
+                        <span>Price {product.price*product.cartQuantity}<ClearRoundedIcon /> </span>
+                        <span>{product.cartQuantity}</span>
                       </div>
                     </div>
                     <StyleImageItemCartShoping><img src={product.image} alt={product.title}/></StyleImageItemCartShoping>

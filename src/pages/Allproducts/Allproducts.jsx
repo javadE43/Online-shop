@@ -1,95 +1,85 @@
-import React,{useEffect,useState} from 'react'
+import React,{useCallback, useEffect,useState} from 'react'
 
-import {useGetAllProductsQuery} from '../../reduxtolkit/featcher/producApi/productApi'
-
+import {useGetAllProductsQuery} from '../../containers/featcher/producApi/productApi'
 import uniqid from 'uniqid';
-
 import { Container, Grid, Stack } from '@mui/material'
 import { Box } from '@mui/system';
 import Pagination from '@mui/material/Pagination';
-
-
-import{ BasicBreadcrumbs, SidebarCategory } from '../categoryProducts/CategoryProducts';
 import { Card } from '../../subComponents/cardProducts/CardProducts';
-
 import { service } from '../../data/productspagaintion';
-
+import { BreadcrumbsPage } from '../../subComponents/Breadcumbs/Breadcrumbs';
+import { SidebarCategory } from '../../subComponents/SidebarCategory/SidebarCategory';
 
  const Allproducts = () => {
 
   const [products,setProducts]=useState([])
-  console.log('Allproduct')
+
   return (
     <Box componenet='section' marginTop='5rem' marginBottom='5rem'>
-    <Container maxWidth='lg' >
+     <Container maxWidth='lg' >
       <Grid container>
         <Grid sx={{ display: { xs: 'none', md: 'flex' },justifyContent:'center' }} item md={12}>
-             <Box
-              padding='1rem'
-             >                
-                  <SidebarCategory/>
-             </Box>
-        </Grid>
-      
-        <>
+          <Box
+            padding='1rem'
+          >                
+          <SidebarCategory/>
+          </Box>
+          </Grid>
+          <>
          <Grid item xs={12} lg={12}>
-         <BasicBreadcrumbs/>        
-         <Grid container item spacing={2}> 
-          {products.map((item)=>(
-               <Grid key={uniqid()} item xs={12} sm={6} md={4}>
-               <Card item={item}/>
-               </Grid>
-            
-         ))}   
-         </Grid>
+           <BreadcrumbsPage/>        
+            <Grid container item spacing={2}> 
+              {products.map((item)=>(
+                <Grid key={uniqid()} item xs={12} sm={6} md={4}>
+                  <Card item={item}/>
+                </Grid>
+            ))}   
+            </Grid>
            <PaginationControlled setProducts={(D)=>setProducts(D)}/>
          </Grid>
        </> 
       </Grid>
     </Container>
-    </Box>
+  </Box>
   )
 }
 
-
-
 const pageSize=6;
-
 export function PaginationControlled({setProducts}) {
-
   const {data,isLoading,error}=useGetAllProductsQuery()
-
-
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState({
     count:0,
     from:0,
     to:pageSize
   });
-
-
-
-  
+  const getproduct=()=>{
+    return new Promise((res,rej)=>{
+        let listproduct=localStorage.getItem('products')?JSON.parse(localStorage.getItem('products')):null;
+        if (listproduct.length>0) { res(listproduct)
+        return
+        }else{res(data)
+        return
+        }
+   })
+}
   const handleChange = (event, page) => {
-
     const from=(page - 1)*pageSize;
     const to=(page - 1)*pageSize + pageSize;
     setPagination({...pagination,from:from,to:to})
     setPage(page)
   };
 
-
   useEffect(() => {
-      if(data){
-            service.getData({from:pagination.from,to:pagination.to,data:data})
-            .then(res=>{setPagination({...pagination,count:res.count})
-              setProducts(res.data)
-              // console.log(res)
-          });
-      }
+    getproduct().then((resList)=>{
+        service.getData({from:pagination.from,to:pagination.to,data:resList})
+        .then(res=>{setPagination({...pagination,count:res.count})
+          setProducts(res.data)
+          // console.log(res)
+      });
+    })
   }, [pagination.from,pagination.to,data])
   
-
   return (
     <Stack spacing={2}
      justifyContent='center'
@@ -100,6 +90,5 @@ export function PaginationControlled({setProducts}) {
     </Stack>
   );
 }
-
 
 export default React.memo(Allproducts)

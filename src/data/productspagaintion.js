@@ -1,5 +1,4 @@
 
-
 export const service ={
     getData:({from,to,data})=>{
         return new Promise((res,rej)=>{  

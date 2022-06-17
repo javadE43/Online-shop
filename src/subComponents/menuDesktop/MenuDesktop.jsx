@@ -2,16 +2,9 @@ import React, { useState } from 'react'
 import {Container, Grid } from '@mui/material'
 import {Link} from 'react-router-dom';
 
-
-
 import {dataListItem} from '../../data/datamenulist'
 
-
-
 import uniqid from 'uniqid';
-
-
-
 
 import {
   DivContainer,

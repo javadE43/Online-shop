@@ -1,21 +1,15 @@
-import React, { useEffect, useRef, useState,useCallback } from 'react'
-import {useNavigate, useParams} from'react-router-dom';
-import { useGetAllProductsQuery } from '../../reduxtolkit/featcher/producApi/productApi';
+import React, { useEffect,useState } from 'react'
+import {useNavigate, useParams,Link as LinkRouter} from'react-router-dom';
 import axios from 'axios';
-
 import uniqid from 'uniqid';
 
 import { Box, Container, Grid, List, ListItem, Paper, Typography } from '@mui/material';
-import { Loding } from '../detailsProduct/DetailsProduct';
-import { Card } from '../../subComponents/cardProducts/CardProducts';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
-import Slider from '@mui/material/Slider';
-
-import {Link as LinkRouter} from 'react-router-dom'
 import { useTheme } from '@mui/system';
 
-
+import { Card } from '../../subComponents/cardProducts/CardProducts';
+import {Loding}from '../../subComponents/Loding/Loding'
 
  const CategoryProducts = () => {
    
@@ -66,15 +60,6 @@ useEffect(()=>{
   )
 }
 
-
-
-
-
-
-
-
-
-
 export const SidebarCategory = () => {
 
   const [category,setCategory]=useState({});
@@ -90,29 +75,27 @@ export const SidebarCategory = () => {
 
   return (
 
-          <Box>
-               <List component='ul' 
-                
-                sx={{display:'flex',alignItems:"center",justifyContent:'space-between'}}
-               
-               >
-                  {
-                    category.length>1 && category.map((item,index)=>(
-                    <ListItem key={uniqid()}  sx={{width:'auto'}}>
-                    <Paper sx={{width:'100%',background:'#fff'}}>
-                    <LinkRouter to={`/products/category/${item}`}
+    <Box>
+      <List component='ul'  
+        sx={{display:'flex',alignItems:"center",justifyContent:'space-between'}}   
+    >
+        {
+          category.length>1 && category.map((item,index)=>(
+            <ListItem key={uniqid()}  sx={{width:'auto'}}>
+            <Paper sx={{width:'100%',background:'#fff'}}>
+            <LinkRouter to={`/products/category/${item}`}
                       
-                      style={{
-                        display:'flex',
-                        justifyContent:'center',
-                        alignItems:'center',
-                        color:"#333",
-                        textDecoration:'none',
-                        padding:'0.5rem 1rem',
-                        textTransform:'capitalize',
-                        width: '180px',
+            style={{
+            display:'flex',
+            justifyContent:'center',
+            alignItems:'center',
+            color:"#333",
+            textDecoration:'none',
+            padding:'0.5rem 1rem',
+            textTransform:'capitalize',
+            width: '180px',
                       }}
-                     >
+                    >
                         <Box component='span'>
                            {item}
                         </Box>

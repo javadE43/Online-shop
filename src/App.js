@@ -7,17 +7,17 @@ import { SnackbarProvider, useSnackbar } from 'notistack';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
-import {useGetAllProductsQuery} from './reduxtolkit/featcher/producApi/productApi'
+import {useGetAllProductsQuery} from './containers/featcher/producApi/productApi'
 
 import ConfigPages  from './configPages/ConfigPages';
-import Header from './components/Header'
+import Header from './components/header/Header'
 import { Box, ThemeProvider } from '@mui/system';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import theme from './theme';
 import  Footer from './components/footer/Footer';
-import { store } from './reduxtolkit/store';
-import { productsFatch } from './reduxtolkit/featcher/product/productSlice';
-import { Slide, Typography } from '@mui/material';
+import { store } from './containers/store';
+import { productsFatch } from './containers/featcher/product/productSlice';
+import { Slide, Stack, Typography } from '@mui/material';
 import { UseFormProvider } from './context/formContext';
 
 
@@ -60,10 +60,20 @@ function App() {
        justifyContent='center'
        alignItems='center'
        >
+      <Stack>
       <Typography 
         color='#fff' 
         variant='h2' 
-        component='span'>Loding</Typography></Box>:
+        component='span'> Server connection please wait
+        </Typography>
+        <Typography 
+        color='#fff' 
+        variant='h2' 
+        textAlign='center'
+        component='span'>Loding 
+        </Typography>
+        </Stack>
+        </Box>:
       //   <Box 
       //  height='100vh'
       //  width='100vw'

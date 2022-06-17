@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 
-import {useGetAllProductsQuery} from '../../reduxtolkit/featcher/producApi/productApi'
+import {useGetAllProductsQuery} from '../../containers/featcher/producApi/productApi'
 
 import {Grid,  Stack, Typography, useTheme } from '@mui/material'
 import { Box } from '@mui/system';

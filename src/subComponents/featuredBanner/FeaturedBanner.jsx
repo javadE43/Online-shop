@@ -1,9 +1,9 @@
 import React,{useEffect,useState} from 'react'
-import { addToCart, decreaseCart, removeallproducts, removeCart,getTotal } from '../../reduxtolkit/featcher/cart/cartslice';
+import { addToCart, decreaseCart, removeallproducts, removeCart,getTotal } from '../../containers/featcher/cart/cartslice';
 import { useDispatch, useSelector } from 'react-redux'
 
 
-import {useGetAllProductsQuery} from '../../reduxtolkit/featcher/producApi/productApi'
+import {useGetAllProductsQuery} from '../../containers/featcher/producApi/productApi'
 
 
 

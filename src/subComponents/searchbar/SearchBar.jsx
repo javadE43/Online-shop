@@ -1,8 +1,8 @@
 import React,{useEffect, useState,useTransition} from 'react';
 import {useSelector,useDispatch}from 'react-redux' 
 import SearchIcon from '@mui/icons-material/Search';
-import { useGetAllProductsQuery } from '../../reduxtolkit/featcher/producApi/productApi';
-import {search}from '../../reduxtolkit/featcher/searchbar/searchbar'
+import { useGetAllProductsQuery } from '../../containers/featcher/producApi/productApi';
+import {search}from '../../containers/featcher/searchbar/searchbar'
 import { borderBottom, styled } from '@mui/system';
 import { Link, useNavigate } from 'react-router-dom';
 import Divider from '@mui/material/Divider';

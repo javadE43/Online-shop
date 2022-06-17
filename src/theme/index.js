@@ -1,8 +1,5 @@
 import {createTheme} from '@mui/material';
 
-
-
-
 export const colors={
     primary:'#d32f2f',
     secondary:'#f6f9fc',
@@ -12,9 +9,6 @@ export const colors={
     colorTextHeader:'#2b3445',
     colorText:'#7d879c',
 }
-
-
-
 
 const theme=createTheme({
 

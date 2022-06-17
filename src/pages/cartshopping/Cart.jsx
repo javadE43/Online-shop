@@ -11,7 +11,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ClearIcon from '@mui/icons-material/Clear';
 import Button from '@mui/material/Button';
-
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { useNavigate } from "react-router-dom";
 
 
@@ -23,7 +23,7 @@ import {
   StyleOutlinedInput,
   StyleFormControl}from './index'
 // import { useTheme } from '@emotion/react';
-import { addToCart, decreaseCart, getTotal, removeallproducts, removeCart } from '../../reduxtolkit/featcher/cart/cartslice';
+import { addToCart, decreaseCart, getTotal, removeallproducts, removeCart } from '../../containers/featcher/cart/cartslice';
 import { Box, useTheme } from '@mui/system';
 
 import uniqid from 'uniqid';
@@ -64,16 +64,21 @@ import { countries } from '../../data/dataCountries';
   
   return (
     <Container maxWidth='xl' sx={{marginBottom:"4rem"}}>
-       <Grid container spacing={2}>
+       <Grid container spacing={2} justifyContent="center">
          <Grid item xs={12}>
-         <Typography color={theme.palette.text.secondary} variant="h3" component="h2" marginY={5} textAlign='center' >
-            Shopping Cart
-         </Typography>
+          <Stack>
+          <Typography color={theme.palette.text.secondary} variant="h3" component="h2" marginY={2} textAlign='center' >
+            CART
+          </Typography>
+          <Typography color={theme.palette.text.secondary} variant="h6" component="div"  textAlign='center' >
+            HOME/CART
+          </Typography>
+          </Stack>
          </Grid>
-          <Grid item container spacing={2}  xs={12} md={8}> 
+          <Grid item spacing={2}  xs={12} md={7}> 
             {
                 cart.cartItem.length>0?cart.cartItem.map((product)=>(
-                <Grid key={uniqid()} item xs={12} position='relative'> 
+                <Grid key={uniqid()} item xs={12} position='relative' marginBottom='1rem'> 
                  <Paper square={false}  elevation={2} component='div' sx={{width:"100%",padding:'0.5rem'}}>
                     <Grid spacing={2} container item justifyContent='space-between'  flexDirection='row'>
                       <Grid item md={1} sm={2} xs={12}><StyleImg src={product.image} alt=''/></Grid>   
@@ -106,13 +111,18 @@ import { countries } from '../../data/dataCountries';
                 </Grid>
                 ))
                 :
-                <Box height={{xs:'auto',md:'10%'}} padding='1rem' marginTop='3rem' width="100%" textAlign='center'  boxShadow={theme.shadows[7]}>
-                  <Typography  fontSize={{sm:'1.5rem',md:'2rem'}} component='div' color={theme.palette.primary.main}>No Product</Typography>
+                <Box height={{xs:'auto',md:'50%'}} padding='1rem' marginTop='3rem' width="100%" textAlign='center'  boxShadow={theme.shadows[7]}>
+                  <Stack justifyContent='center' alignItems='center'>
+                    <LocalMallOutlinedIcon color='error' sx={{fontSize:'13rem'}}/>
+                    <Typography  fontSize={{sm:'1.5rem',md:'2rem'}} component='div' color={theme.palette.primary.main}>
+                      There are no products in your cart!
+                    </Typography>
+                  </Stack>
                 </Box>
             }
             </Grid> 
-            <Grid item xs={12} md={4}>
-                <SidebarCart/>
+            <Grid item xs={12} md={3}>
+               <SidebarCart/>
             </Grid>
             {cart.cartItem.length>0 &&
             <Grid item xs={12}>

@@ -1,12 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Box, Container, Grid, Toolbar } from '@mui/material'
-import {Link} from 'react-router-dom';
-import { borderBottom, styled,keyframes } from '@mui/system';
-import Divider from '@mui/material/Divider';
+import {styled,keyframes } from '@mui/system';
 import Paper from '@mui/material/Paper';
-import Slide from '@mui/material/Slide';
-import CssBaseline from '@mui/material/CssBaseline';
-
 
 const styleAnimation=keyframes`
 
@@ -23,9 +16,6 @@ const styleAnimation=keyframes`
 
 `
 
-
-
-
 export const DivContainer = styled('div')(({ theme }) => ({
   background:'#fff',
   height:'100%',
@@ -35,6 +25,10 @@ export const DivContainer = styled('div')(({ theme }) => ({
 }));
 
 export const StyleLinkContainer = styled('div')(({ theme }) => ({
+  '& > ul':{
+    visibility:'hidden', 
+    transform: 'translateY(100px)',
+  },
   background:'#fff',
   display:`flex`,
   padding:`0.5rem 1rem`,
@@ -43,8 +37,8 @@ export const StyleLinkContainer = styled('div')(({ theme }) => ({
   position:'relative',
   cursor:'pointer',
   '&:hover > ul':{
-    visibility:'visible',    
-    animation:`${styleAnimation} 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
+    visibility:'visible',   
+    animation:`${styleAnimation} 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both`,
 
 },
 
@@ -55,23 +49,14 @@ export const StyleLinkContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     justifyContent:'center',
     alignItems:'center',
-    transition:'color 0.75s ease',
+    transition:'color 0.5s ease',
 
   },
-  '& a:hover':{
+  '&:hover >a':{
     color:'#ffe0b2'
   },
-  '& > ul':{
-    visibility:'hidden', 
-    transform: 'translateY(100px)',
-  },
-
- 
 
 }));
-
-
-
 
 const styleAnimationDrow=keyframes`
 
