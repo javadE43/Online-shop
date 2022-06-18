@@ -20,6 +20,7 @@ import { useGetAllProductsQuery } from '../../containers/featcher/producApi/prod
 
 import './style.css';
 import { SliderContainer,Slider,Description,CartSlide,StyleButton } from './index';
+import { Link } from 'react-router-dom';
 
 
 export const CarouselHome = () => {
@@ -91,9 +92,9 @@ export const SwiperItemSlide = ({item,matches}) => {
         <Description>
             <h2>New Products</h2>
             <p>{item.description}</p>
-            <div>
+            <Link to='/products'>
             <StyleButton variant="contained">Shop now</StyleButton>
-            </div>
+            </Link>
          </Description>
         </Grid>
         <Grid item xs={12} md={4}>
