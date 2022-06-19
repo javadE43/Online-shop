@@ -15,7 +15,7 @@ export const Login = ( {setOpenModal,openModal}) => {
   setOpenModal(false)
   setOpenSignup(true)
   }
-  console.log(openModal)
+  // console.log(openModal)
   return (
     <>
     <Modal

@@ -10,12 +10,12 @@ export const dataListItem=[
         id:1,
         path:'/home',
         title:'Home',
-        category:'categoryHome',
+        category:'CategoryHome',
         icone:<KeyboardArrowDownRoundedIcon/>,  
         subMenu:[
             {
                 id:1,
-               category:'categoryHome1' ,
+               category:'CategoryHome1' ,
                title:'Home1',  
                path:'/home1',
                icone:<ArrowRightIcon/>, 
@@ -42,7 +42,7 @@ export const dataListItem=[
             },
             {
                 id:2,
-                category:'categoryHome2',
+                category:'CategoryHome2',
                 title:'Home2',  
                 path:'/Home2',
                 icone:<ArrowRightIcon/>, 
@@ -60,7 +60,7 @@ export const dataListItem=[
              },
              {
                 id:3,
-                category:'categoryHome3',
+                category:'CategoryHome3',
                 title:'Home3',  
                 path:'/Home3',
                 icone:<ArrowRightIcon/>, 
@@ -78,7 +78,7 @@ export const dataListItem=[
              },
              {
                 id:4,
-                category:'categoryHome4',
+                category:'CategoryHome4',
                 title:'Home4',  
                 path:'/Home4',
                 icone:<ArrowRightIcon/>, 
@@ -126,7 +126,7 @@ export const dataListItem=[
         id:2,
         path:'/products',
         title:'products',
-        category:'categoryProduc' ,
+        category:'CategoryProduct' ,
         icone:<KeyboardArrowDownRoundedIcon/>,
         subMenu:[
             {
@@ -175,7 +175,7 @@ export const dataListItem=[
         id:3,
         path:'/about',
         title:'about',
-        category:'categoryAbout' ,
+        category:'CategoryAbout' ,
         icone:<KeyboardArrowDownRoundedIcon/>,
         subMenu:[
             {
@@ -209,7 +209,7 @@ export const dataListItem=[
         id:4,
         path:'/contact',
         title:'contact',
-        category:'categoryContact' ,
+        category:'CategoryContact' ,
         icone:<KeyboardArrowDownRoundedIcon/>,
         subMenu:[
             {

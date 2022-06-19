@@ -16,26 +16,32 @@ export const SectionBrands = () => {
     const theme=useTheme();
     const [product,seProduct]=useState([])
     const {data,isLoading,error}=useGetAllProductsQuery()
-   const productsCart=()=>{
-     const localImage=JSON.parse(localStorage.getItem('CardBarand'));
-     if (localImage) {
-      seProduct(localImage)
-     }if(data){
-       localStorage.setItem('CardBarand',JSON.stringify(data))
+    const getproduct= async ()=>{
+      try {
+        let listproduct=localStorage.getItem('products')?JSON.parse(localStorage.getItem('products')):null;
+        if (listproduct.length>0) {
+          seProduct(listproduct)
+         }
+         else{
+          seProduct(data)
+         }
+      } catch (error) {
+        // console.log('error')
+      }
      }
-   }
+
    useEffect(()=>{
-    productsCart()
+    getproduct()
    },[])
 
 
   return (
         <Box component='section' sx={{marginTop:'3rem'}}>
             <Grid container spacing={2}>
-            <Grid sx={{ display: { xs: 'none', lg: 'flex'}}}  item  xs={12} md={2}>
+            <Grid sx={{ display: { xs: 'none', lg: 'flex'}}}  item  md={3}>
                 <Sidebar/>
             </Grid>
-            <Grid item xs={12} md={10}>
+            <Grid item lg={9} xs={12}>
             <Box >
               <Box
                sx={{display:"flex",justifyContent:'space-between',padding: '2rem 0 1rem 0'}}
@@ -47,7 +53,7 @@ export const SectionBrands = () => {
                   component='span'
                   color={theme.palette.text.primary}
                   fontWeight={theme.typography.fontWeightBold}
-                  > New Arrivals</Typography>
+                  > Brands</Typography>
             </Stack>
             <span>
               <Link to='/'>
@@ -55,10 +61,10 @@ export const SectionBrands = () => {
               </Link>
             </span>
              </Box>
-              <Grid container spacing={3}>
+              <Grid container item spacing={3} xs={12}>
                 {
                    data && data.slice(0,6).map((card,index)=>(
-                     <Grid key={uniqid()} item xs={12} sm={2} md={4}>
+                     <Grid key={uniqid()} item xs={12} sm={6} md={4}>
                            <Card item={card}/>
                      </Grid>
                    ))
@@ -82,11 +88,14 @@ const Sidebar = () => {
     getProduct()
   
   },[])
-  
+  console.log(category)
       return (
-        <Box>
-             <Paper>
-                 <List component='ul'>
+        <Box height='350px'>
+             <Paper sx={{height:'100%'}}>
+                 <List 
+                 component='ul'
+                  sx={{height:'100%'}}
+                 >
                     {
                       category.length>1 && category.map((item,index)=>(
                       <ListItem key={uniqid()} >
@@ -103,6 +112,11 @@ const Sidebar = () => {
                           >
                           </Box>
                           <Box component='span'>
+                             <Box component='span' marginRight='0.5rem'>
+                              <Typography  fontWeight='bold' color='error' component='span'>
+                                  Brands
+                              </Typography>
+                             </Box>
                              {item}
                           </Box>
                         </Stack>
@@ -111,6 +125,17 @@ const Sidebar = () => {
                      </ListItem>
                       ))
                     }
+                    <ListItem sx={{display:'flex',justifyContent:'center',mt:'2rem'}}>
+                     <StylePaper sx={{width:'100%',background:'#fff'}}>
+                      <Box padding='0.5rem 1rem'>
+                        <Typography textAlign='center' fontWeight='bold' color='error' component='div'>
+                          <Link to='/products'>
+                             View All Brands
+                          </Link>
+                         </Typography>
+                        </Box>
+                      </StylePaper>
+                    </ListItem>
                  </List>
              </Paper>
         </Box>

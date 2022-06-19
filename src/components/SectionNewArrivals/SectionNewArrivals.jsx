@@ -15,39 +15,39 @@ import uniqid from 'uniqid';
 const newArrivals=[
   {
     id:1,
-    title:'camera',
+    title:'Sunglass',
     image:NewArrivals1,
-    price:3.300,
+    price:3300,
   },
   {
     id:2,
-    title:'mobile',
+    title:'Makeup',
     image:NewArrivals2,
     price:400,
   },
   {
     id:3,
-    title:'shoes',
+    title:'Smart Watch',
     image:NewArrivals3,
-    price:999,
+    price:786,
   },
   {
     id:4,
-    title:'watch',
+    title:'Lipstick',
     image:NewArrivals4,
-    price:999,
+    price:375,
   },
   {
     id:5,
-    title:'watch',
+    title:'Green plant',
     image:NewArrivals5,
-    price:999,
+    price:599,
   },
   {
     id:6,
-    title:'watch',
+    title:'Bonsai tree',
     image:NewArrivals6,
-    price:999,
+    price:799,
   },
   
 ]
@@ -68,7 +68,7 @@ export const SectionNewArrivals = () => {
           setProduct(data)
          }
       } catch (error) {
-        console.log('error')
+        // console.log('error')
       }
      }
     useEffect(()=>{

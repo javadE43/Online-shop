@@ -42,7 +42,7 @@ const handlerDecreaseCart=(item)=>{
 
 const handlerIncreaseCart=(item)=>{
   Dispatch(addToCart(item))
-  console.log(item)
+  // console.log(item)
 }
 
 React.useEffect(()=>{

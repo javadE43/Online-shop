@@ -18,7 +18,7 @@ export const ButtonNavigationMobile = () => {
     };
     const handleClose = (e) => {
       setOpenModal(true)
-      console.log(openModal)
+      // console.log(openModal)
     }
     return (
       <BottomNavigation sx={{

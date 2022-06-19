@@ -35,7 +35,7 @@ import { useGetAllProductsQuery } from '../../containers/featcher/producApi/prod
         setProduct(data)
        }
     } catch (error) {
-      console.log('error')
+      // console.log('error')
     }
    }
  useEffect(()=>{

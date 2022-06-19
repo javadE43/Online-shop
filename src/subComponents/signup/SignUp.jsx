@@ -2,7 +2,7 @@ import React,{useContext, useEffect, useState} from 'react'
 
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import {useFormContext}from '../../context/formContext'
-import { AddCircleOutlineOutlined, LockOutlined } from '@mui/icons-material'
+import { AddCircleOutlineOutlined, LockOutlined, Visibility, VisibilityOff } from '@mui/icons-material'
 import { Avatar,
    Box,
    Button, 
@@ -12,7 +12,12 @@ import { Avatar,
    FormControlLabel,
    FormLabel,
    Grid,
+   IconButton,
+   Input,
+   InputAdornment,
+   InputLabel,
    Link,
+   OutlinedInput,
    Paper,
    Radio,
    RadioGroup,
@@ -38,28 +43,44 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
     confirmPass:'',
     phone:'',
     accept:false,
+    showPassword: false,
+    textMatchPass:''
  })
     const handleClose = () => setOpenModal(false);
     const handleOnsubmit=(e)=>{
       e.preventDefault();
-      setOpenModal(false)
-      setsuccess(true)
-      dispatch({type:'success',payload:value})
-      localStorage.setItem('formdata',JSON.stringify(value))
+      if(value.password==value.confirmPass){
+        setOpenModal(false)
+        setsuccess(true)
+        dispatch({type:'success',payload:value})
+        localStorage.setItem('formdata',JSON.stringify(value))
+        console.log('submit')
+      }
+      if(value.password!=value.confirmPass){
+        setValue({...value,textMatchPass:'password dont match'})
+      }
+ 
     }
 
-
+    const handleClickShowPassword = () => {
+      setValue({
+        ...value,
+        showPassword: !value.showPassword,
+      });
+    };
   
     const handleClickVariant = (variant) =>{
       enqueueSnackbar(`Welcome ${state.data.username}!`, { variant });
     };
-  
+    const handleMouseDownPassword = (event) => {
+      event.preventDefault();
+    };
     useEffect(() => {
       if(state && success){handleClickVariant('success')}
       setsuccess(false)
     }, [success])
 
-
+    console.log(value.textMatchPass)
   return (
       <>
     <Modal
@@ -140,18 +161,26 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                  onChange={(e)=>setValue({...value,phone:e.target.value})}
                  value={value.phone}
                  />    
-                <TextField
-                 variant='standard'
-                //  sx={{marginTop:'1rem'}}
-                 label='Password' 
-                 type='Password' 
-                 placeholder='Enter Password' 
-                 fullWidth 
-                 required
-                 value={value.password}
-                 onChange={(e)=>setValue({...value,password:e.target.value})}
-
-                   />
+                <FormControl sx={{ width: '100%' }} variant="standard">
+                      <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                      <Input
+                        id="standard-adornment-password"
+                        type={value.showPassword ? 'text' : 'password'}
+                        value={value.password}
+                        onChange={(e)=>setValue({...value,password:e.target.value})}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                            >
+                              {value.showPassword ? <VisibilityOff /> : <Visibility />}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                      />
+                 </FormControl>
                 <TextField
                  variant='standard'
                 //  sx={{marginTop:'1rem'}}
@@ -161,8 +190,9 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                  fullWidth 
                  required
                  value={value.confirmPass}
-                 onChange={(e)=>setValue({...value,confirmPass:e.target.checked})}
+                 onChange={(e)=>setValue({...value,confirmPass:e.target.value})}
                  />
+                 {value.textMatchPass?<Typography component='span' color='error'>{value.textMatchPass}</Typography>:null}
                 <FormControlLabel
                   control={
                   <Checkbox
@@ -170,6 +200,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
                 //    onChange={handlerchange}
                    name='check'
                    color='error'
+                   required
                    onChange={(e)=>setValue({...value,accept:e.target.value})}
                   />
               }

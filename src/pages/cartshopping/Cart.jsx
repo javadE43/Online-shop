@@ -33,7 +33,7 @@ import { countries } from '../../data/dataCountries';
 
  const Cart = () => {
 
-  console.log('cartshopingPage')
+  // console.log('cartshopingPage')
 
   const theme=useTheme();
   const matches =useMediaQuery(theme.breakpoints.down('md'));
@@ -75,7 +75,7 @@ import { countries } from '../../data/dataCountries';
           </Typography>
           </Stack>
          </Grid>
-          <Grid item spacing={2}  xs={12} md={7}> 
+          <Grid item  xs={12} md={7}> 
             {
                 cart.cartItem.length>0?cart.cartItem.map((product)=>(
                 <Grid key={uniqid()} item xs={12} position='relative' marginBottom='1rem'> 

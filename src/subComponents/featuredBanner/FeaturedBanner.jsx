@@ -2,10 +2,7 @@ import React,{useEffect,useState} from 'react'
 import { addToCart, decreaseCart, removeallproducts, removeCart,getTotal } from '../../containers/featcher/cart/cartslice';
 import { useDispatch, useSelector } from 'react-redux'
 
-
 import {useGetAllProductsQuery} from '../../containers/featcher/producApi/productApi'
-
-
 
 import { Container, Divider, Grid, List, Stack, Typography, useTheme } from '@mui/material'
 import { Box } from '@mui/system';
@@ -13,28 +10,18 @@ import Paper from '@mui/material/Paper';
 import Rating from '@mui/material/Rating';
 import StarBorderPurple500TwoToneIcon from '@mui/icons-material/StarBorderPurple500TwoTone';
 
-
 import uniqid from 'uniqid';
 
-
-
 import { Link } from 'react-router-dom';
-
-
-
 
 import {StyleImage,StyleLink} from './index'
 import featured1 from '../../assets/featured/jim.webp'
 import featured2 from '../../assets/featured/britches.webp'
 
-
-
-
-
 const featured=[
   {
     id:1,
-    title:'camera',
+    title:'jim & jago',
     rating:5,
     image:featured1,
     price:3.300,
@@ -64,7 +51,7 @@ export const FeaturedBanner = () => {
           setProduct(data)
          }
       } catch (error) {
-        console.log('error')
+        // console.log('error')
       }
     
      }

@@ -91,7 +91,7 @@ export const CaroselBigDiscounts = () => {
           setProduct(data)
          }
       } catch (error) {
-        console.log('error')
+        // console.log('error')
       }
     
      }
@@ -160,9 +160,9 @@ export const CaroselBigDiscounts = () => {
                   </StyleImage>
                  <Typography 
                  textAlign='start'
-                 variant="h6"
-                 component="h2"
-                 color={theme.palette.text.secondary}>Title</Typography>
+                //  variant="h6"
+                //  component="span"
+                 color={theme.palette.text.secondary}>{rtopatings.title.slice(0,10)}</Typography>
                  <Typography 
                  textAlign='start'
                  variant="h6"
