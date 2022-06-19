@@ -79,8 +79,10 @@ export const SignIn = () => {
     setAnchorEl(null);
     setOpenModal(true)
     setType(e.target.textContent)
-    localStorage.removeItem('formdata')
-    dispatch({type:'LOGOUT',payload:[]})
+    if(e.target.textContent=='Logout'){
+       localStorage.removeItem('formdata')
+       dispatch({type:'Logout',payload:[]})
+    }
   };
   return (
     <>

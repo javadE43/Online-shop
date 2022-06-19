@@ -24,7 +24,7 @@ const reducer=(state=INITIALVALUE,action)=>{
                 }
             )  
         break;
-        case'LOGOUT':
+        case'Logout':
         return(
             {
                ...state,
